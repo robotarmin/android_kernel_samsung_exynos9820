@@ -1,4 +1,4 @@
-name: beyond0lte
+name: build-beyond0lte
 
 on:
   workflow_dispatch:
@@ -26,16 +26,6 @@ jobs:
       run: |
         cd exynos9820
         git submodule update --init --recursive
-    - name: Checkout patches
-      uses: actions/checkout@v3
-      with:
-        ref: build
-        path: patches
-
-    - name: Apply patches
-      run: |
-        cd exynos9820
-        git apply ../patches/0051-ksu_support_umount_for_4.4.patch
     - name: Android kernel build
       run: |
         sudo apt install libdebuginfod-dev
